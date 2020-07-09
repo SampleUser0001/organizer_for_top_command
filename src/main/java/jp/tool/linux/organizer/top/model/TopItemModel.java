@@ -1,10 +1,10 @@
 package jp.tool.linux.organizer.top.model;
 
-import java.util.Date;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
+
 import lombok.Data;
 
 @Data
