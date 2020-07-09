@@ -1,6 +1,52 @@
 package jp.tool.linux.organizer.top.model;
 
+import java.util.Date;
+import java.util.List;
+import java.util.ArrayList;
+
+import org.apache.commons.lang3.StringUtils;
+import lombok.Data;
+
+
+@Data
 public class TopItemModel {
+
+    private int pid;
+    private String user;
+    private String pr;
+    private int ni;
+    private int virt;
+    private int res;
+    private int shr;
+    private String s;
+    private float cpu;
+    private float mem;
+    private String time;
+    private String command;
     
+    public TopItemModel(String line) {
+        List<String> tmpList = new ArrayList<String>();
+        String[] splited = line.split(" ");
+        for(String item : splited) {
+            if(!StringUtils.isEmpty(item)) {
+                tmpList.add(item);
+            }
+        }
+        
+        int index = 0;
+        pid = Integer.parseInt(tmpList.get(index++));
+        user = tmpList.get(index++);
+        pr = tmpList.get(index++);
+        ni = Integer.parseInt(tmpList.get(index++));
+        virt = Integer.parseInt(tmpList.get(index++));
+        res = Integer.parseInt(tmpList.get(index++));
+        shr = Integer.parseInt(tmpList.get(index++));
+        s = tmpList.get(index++);
+        cpu = Float.parseFloat(tmpList.get(index++));
+        mem = Float.parseFloat(tmpList.get(index++));
+        // timeは本当は「秒」だが、横着する
+        time = tmpList.get(index++);
+        command = tmpList.get(index++);
+    }
     
 }
