@@ -11,34 +11,30 @@ import java.util.stream.Stream;
 
 import org.apache.commons.lang3.StringUtils;
 
+import jp.tool.linux.organizer.top.model.MemModel;
 import jp.tool.linux.organizer.top.model.TopItemModel;
 
 public class TempMain {
     public static void main(String[] args) {
         try {
-            List<Path> pathList = Files.walk(Paths.get(args[0]), 1)
+            List<Path> pathList
+             = Files.walk(Paths.get(args[0]), 1)
                  .filter(path -> !Files.isDirectory(path))
                  .collect(Collectors.toList());
             for(Path path : pathList) {
                 System.out.println(path);
-                try {
-                    Stream<String> lineStream = Files.lines(path);
-                    lineStream.skip(7)
-                              .forEach(line -> {
-                        if(!StringUtils.isEmpty(line)) {
-                            System.out.println(new TopItemModel(line).toString());
-                        }
-                    });
-                    // lineStream
-                    //     .skip(7);
-                    //     .forEach(line -> {
-                    //         System.out.println(new TopItemModel(line).toString());
-                    // });
-                } catch (IOException e) {
-                    e.printStackTrace();
+                List<String> lineList = Files.readAllLines(path);
+                int index = 3;
+                System.out.println(new MemModel(lineList.get(index++)).toString());
+
+                for( index = 7 ; index < lineList.size() ; index++ ) {
+                    String line = lineList.get(index);
+                    if(!StringUtils.isEmpty(line)) {
+                        System.out.println(new TopItemModel(line).toString());
+                    }
                 }
             }
-        } catch (IOException e) {
+        } catch (IOException | IllegalArgumentException e) {
             e.printStackTrace();
         }
         
