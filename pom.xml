@@ -13,7 +13,7 @@
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.mainClass>jp.tool.linux.organizer.top.TempMain</project.mainClass>
+    <project.mainClass>jp.tool.linux.organizer.top.TempPrintFreeMem</project.mainClass>
   </properties>
 
   <dependencies>
