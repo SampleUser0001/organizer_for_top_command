@@ -15,9 +15,9 @@ public class TopItemModel {
     private String user;
     private String pr;
     private int ni;
-    private int virt;
-    private int res;
-    private int shr;
+    private String virt;
+    private String res;
+    private String shr;
     private String s;
     private float cpu;
     private float mem;
@@ -38,15 +38,18 @@ public class TopItemModel {
         user = tmpList.get(index++);
         pr = tmpList.get(index++);
         ni = Integer.parseInt(tmpList.get(index++));
-        virt = Integer.parseInt(tmpList.get(index++));
-        res = Integer.parseInt(tmpList.get(index++));
-        shr = Integer.parseInt(tmpList.get(index++));
+        virt = tmpList.get(index++);
+        res = tmpList.get(index++);
+        shr = tmpList.get(index++);
         s = tmpList.get(index++);
         cpu = Float.parseFloat(tmpList.get(index++));
         mem = Float.parseFloat(tmpList.get(index++));
-        // timeは本当は「秒」だが、横着する
         time = tmpList.get(index++);
-        command = tmpList.get(index++);
+        command = "";
+        for( ; index < tmpList.size() ; ){
+            command += tmpList.get(index++) + " ";
+        }
+        command = command.trim();
     }
     
 }
