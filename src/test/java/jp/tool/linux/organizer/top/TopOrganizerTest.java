@@ -13,7 +13,7 @@ public class TopOrganizerTest extends TestCase {
      *
      * @param testName name of the test case
      */
-    public AppTest( String testName ) {
+    public TopOrganizerTest( String testName ) {
         super( testName );
     }
 
@@ -21,7 +21,7 @@ public class TopOrganizerTest extends TestCase {
      * @return the suite of tests being tested
      */
     public static Test suite() {
-        return new TestSuite( AppTest.class );
+        return new TestSuite( TopOrganizerTest.class );
     }
 
     /**
