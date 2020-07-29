@@ -2,3 +2,10 @@
 
 target/
 tmp/
+
+.classpath
+.factorypath
+.project
+
+.settings/
+.vscode/
