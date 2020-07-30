@@ -15,6 +15,7 @@ import jp.tool.linux.organizer.top.model.TopItemModel;
 public class TempMain {
     public static void main(String[] args) {
         try {
+            System.out.println(Paths.get(args[0]).toAbsolutePath());
             List<Path> pathList
              = Files.walk(Paths.get(args[0]), 1)
                  .filter(path -> !Files.isDirectory(path))
